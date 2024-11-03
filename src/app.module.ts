@@ -12,6 +12,7 @@ import { StudentModule } from './student/student.module';
 import { SchaduleModule } from './schadule/schadule.module';
 import { SubjectModule } from './subject/subject.module';
 import { ExamModule } from './exam/exam.module';
+import { TeacherStudentModule } from './teacher-student/teacher-student.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { ExamModule } from './exam/exam.module';
     SchaduleModule,
     SubjectModule,
     ExamModule,
+    TeacherStudentModule,
   ],
   controllers: [AppController],
   providers: [AppService],

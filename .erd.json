@@ -4,8 +4,8 @@
   "settings": {
     "width": 2000,
     "height": 2000,
-    "scrollTop": -403.3404,
-    "scrollLeft": -430.615,
+    "scrollTop": -526.3404,
+    "scrollLeft": -76.615,
     "zoomLevel": 1,
     "show": 431,
     "database": 16,
@@ -1126,34 +1126,6 @@
           "createAt": 1730272090248
         }
       },
-      "NDsV-KRfTEIe0SACC23AR": {
-        "id": "NDsV-KRfTEIe0SACC23AR",
-        "identification": false,
-        "relationshipType": 16,
-        "startRelationshipType": 2,
-        "start": {
-          "tableId": "Wef_CN_AtVa4PHO_Fllkq",
-          "columnIds": [
-            "qPGMGfQYyQXRnoxs21-9L"
-          ],
-          "x": 378.5,
-          "y": 664,
-          "direction": 4
-        },
-        "end": {
-          "tableId": "O5-o_j50egjRnmWcIoYGz",
-          "columnIds": [
-            "JUkevrioJe6y9843bU7rf"
-          ],
-          "x": 379.5,
-          "y": 567,
-          "direction": 8
-        },
-        "meta": {
-          "updateAt": 1730272243625,
-          "createAt": 1730272243625
-        }
-      },
       "Tne3RDMofoMpQmHRLV2e4": {
         "id": "Tne3RDMofoMpQmHRLV2e4",
         "identification": false,
@@ -1269,20 +1241,7 @@
         }
       }
     },
-    "indexEntities": {
-      "UaibllET1CDPZDxieOP7S": {
-        "id": "UaibllET1CDPZDxieOP7S",
-        "name": "",
-        "tableId": "O5-o_j50egjRnmWcIoYGz",
-        "indexColumnIds": [],
-        "seqIndexColumnIds": [],
-        "unique": false,
-        "meta": {
-          "updateAt": 1730272062328,
-          "createAt": 1730272062328
-        }
-      }
-    },
+    "indexEntities": {},
     "indexColumnEntities": {},
     "memoEntities": {}
   },
@@ -1457,12 +1416,6 @@
         "dataType": 1730272051382
       }
     ],
-    "UaibllET1CDPZDxieOP7S": [
-      "indexEntities",
-      1730272062326,
-      1730272064962,
-      {}
-    ],
     "2yU6VfDYqvSgU8BQIIoK7": [
       "tableColumnEntities",
       1730272090246,
@@ -1556,12 +1509,6 @@
         "default": 1730272243624,
         "comment": 1730272243624
       }
-    ],
-    "NDsV-KRfTEIe0SACC23AR": [
-      "relationshipEntities",
-      1730272243624,
-      1730272254351,
-      {}
     ],
     "yyzsPtr9zuQNzYsLXNSco": [
       "tableColumnEntities",

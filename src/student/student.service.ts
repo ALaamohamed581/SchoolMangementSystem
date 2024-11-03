@@ -16,11 +16,11 @@ export class StudentService {
   }
 
   findAll() {
-    return `This action returns all student`;
+    return this.studentRepo.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} student`;
+    return this.studentRepo.findOne({ where: { id } });
   }
 
   update(id: number, updateStudentDto: UpdateStudentDto) {

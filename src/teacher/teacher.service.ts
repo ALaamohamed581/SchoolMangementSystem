@@ -17,7 +17,6 @@ export class TeacherService {
   }
 
   async findAll() {
-    const name = 'alaa@yahh.com';
     const queryBuilder = this.TeacherRepo.createQueryBuilder(
       'teacher',
     ).innerJoinAndSelect('teacher.students', 'student');
@@ -25,8 +24,20 @@ export class TeacherService {
     return await queryBuilder.getMany();
   }
 
-  findOne(id: number) {
-    return this.TeacherRepo.findOne({ where: { id } });
+  async findOne(id: number) {
+    const queryBuilder = await this.TeacherRepo.createQueryBuilder('teacher')
+      .andWhere('teacher.id = :id', { id })
+      .innerJoinAndSelect('teacher.students', 'student')
+      .getOne();
+
+    return queryBuilder;
+  }
+  async findOneWithStudents(id: number) {
+    const queryBuilder = await this.TeacherRepo.createQueryBuilder('teacher')
+      .andWhere('teacher.id = :id', { id })
+      .getOne();
+
+    return queryBuilder;
   }
 
   async update(id: number, updateTeacherDto: UpdateTeacherDto) {
@@ -38,7 +49,7 @@ export class TeacherService {
 
     return up;
   }
-
+  async asignStudentsToTeacher(teacherId: number, studentId: number) {}
   remove(id: number) {
     return `This action removes a #${id} teacher`;
   }
