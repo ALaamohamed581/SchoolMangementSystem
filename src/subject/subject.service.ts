@@ -4,14 +4,15 @@ import { UpdateSubjectDto } from './dto/update-subject.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Subject } from './entities/subject.entity';
+import { Exam } from 'src/entites/exam.entity';
 
 @Injectable()
 export class SubjectService {
   constructor(
     @InjectRepository(Subject) private subjectRepo: Repository<Subject>,
+    @InjectRepository(Exam) private examRepo: Repository<Exam>,
   ) {}
   async create(createSubjectDto: CreateSubjectDto) {
-    console.log(createSubjectDto);
     let subject = this.subjectRepo.create(createSubjectDto);
     return await this.subjectRepo.save(subject);
   }
@@ -24,8 +25,12 @@ export class SubjectService {
     return `This action returns a #${id} subject`;
   }
 
-  update(id: number, updateSubjectDto: UpdateSubjectDto) {
-    return `This action updates a #${id} subject`;
+  async AssignSubjectExam(id: number, date: Date) {
+    let up = await this.subjectRepo
+      .createQueryBuilder('subject')
+      .where('subject.id', { id })
+      .getOne();
+    let exam = this.examRepo.create({ TimeDate: date, subjects: up });
   }
 
   remove(id: number) {
