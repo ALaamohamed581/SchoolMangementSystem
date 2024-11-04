@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { CreateSchaduleDto } from './dto/create-schadule.dto';
 import { UpdateSchaduleDto } from './dto/update-schadule.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Schadule } from './entities/schadule.entity';
 import { Repository } from 'typeorm';
+import { Schadule } from 'src/entites/schadule.enitity';
 
 @Injectable()
 export class SchaduleService {
