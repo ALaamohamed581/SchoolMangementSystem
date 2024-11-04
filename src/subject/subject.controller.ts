@@ -20,8 +20,11 @@ export class SubjectController {
     return this.subjectService.create(createSubjectDto);
   }
   @Post(':id')
-  AssignSubjectExam(@Body() date: Date, @Param() id: number) {
-    return this.subjectService.AssignSubjectExam(id, date);
+  AssignSubjectExam(
+    @Param('subId') subId: number,
+    @Param('examId') examId: number,
+  ) {
+    return this.subjectService.AssignSubjectExam(subId, examId);
   }
 
   @Get()
@@ -34,10 +37,10 @@ export class SubjectController {
     return this.subjectService.findOne(+id);
   }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateSubjectDto: UpdateSubjectDto) {
-  //   return this.subjectService.update(+id, updateSubjectDto);
-  // }
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateSubjectDto: UpdateSubjectDto) {
+    return this.subjectService.update(+id, updateSubjectDto);
+  }
 
   @Delete(':id')
   remove(@Param('id') id: string) {

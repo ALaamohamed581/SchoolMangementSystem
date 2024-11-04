@@ -17,20 +17,24 @@ export class SubjectService {
     return await this.subjectRepo.save(subject);
   }
 
-  findAll() {
-    return `This action returns all subject`;
+  async findAll() {
+    return await this.subjectRepo.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} subject`;
+  async findOne(id: number) {
+    return await this.subjectRepo.findOne({ where: { id } });
   }
 
-  async AssignSubjectExam(id: number, date: Date) {
-    let up = await this.subjectRepo
-      .createQueryBuilder('subject')
-      .where('subject.id', { id })
-      .getOne();
-    let exam = this.examRepo.create({ TimeDate: date, subjects: up });
+  async AssignSubjectExam(subjectId: number, exammId: number) {
+    // let up = await this.subjectRepo
+    //   .createQueryBuilder('subject')
+    //   .where('subject.id', { id })
+    //   .getOne();
+    // let exam = this.examRepo.create({ TimeDate: date, subjects: up });
+  }
+
+  async update(id: number, data: any) {
+    return await this.subjectRepo.update(id, data);
   }
 
   remove(id: number) {
