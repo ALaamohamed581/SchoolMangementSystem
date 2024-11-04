@@ -19,7 +19,7 @@ export class SubjectController {
   create(@Body() createSubjectDto: CreateSubjectDto) {
     return this.subjectService.create(createSubjectDto);
   }
-  @Post(':id')
+  @Post(':subId/:examId')
   AssignSubjectExam(
     @Param('subId') subId: number,
     @Param('examId') examId: number,

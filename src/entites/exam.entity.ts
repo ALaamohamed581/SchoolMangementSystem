@@ -13,7 +13,7 @@ import { Student } from './student.entity';
 export class Exam {
   @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
-  @Column({ type: 'varchar' })
+
   @Column({ type: 'date' })
   TimeDate: Date;
   @ManyToOne(() => Subject, (Subject) => Subject.exams)

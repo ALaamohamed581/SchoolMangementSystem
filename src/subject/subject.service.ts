@@ -26,11 +26,15 @@ export class SubjectService {
   }
 
   async AssignSubjectExam(subjectId: number, exammId: number) {
-    // let up = await this.subjectRepo
-    //   .createQueryBuilder('subject')
-    //   .where('subject.id', { id })
-    //   .getOne();
-    // let exam = this.examRepo.create({ TimeDate: date, subjects: up });
+    let subject = await this.subjectRepo.findOne({
+      where: { id: subjectId },
+      relations: ['exams'],
+    });
+    let exam = await this.examRepo.findOne({ where: { id: exammId } });
+
+    subject.exams.push(exam);
+    await this.subjectRepo.save(subject);
+    return subject;
   }
 
   async update(id: number, data: any) {
