@@ -23,16 +23,6 @@ export class TeacherStudentController {
     return this.teacherStudentService.asign(stdId, teachherId);
   }
 
-  @Get()
-  findAll() {
-    return this.teacherStudentService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.teacherStudentService.findOne(+id);
-  }
-
   @Patch(':id')
   update(
     @Param('id') id: string,

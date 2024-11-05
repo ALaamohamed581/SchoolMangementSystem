@@ -17,8 +17,9 @@ export class TeacherService {
   }
 
   async findAll() {
-    const queryBuilder =
-      await this.TeacherRepo.createQueryBuilder('teacher').getMany();
+    const queryBuilder = await this.TeacherRepo.createQueryBuilder('teacher')
+      .take(5)
+      .getMany();
 
     return queryBuilder;
   }
