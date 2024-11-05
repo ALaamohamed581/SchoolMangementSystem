@@ -13,6 +13,8 @@ export class Schadule {
   id: number;
   @Column({ type: 'date' })
   date: Date;
+  @Column({ type: 'time', nullable: true })
+  time: Date;
   @ManyToMany(() => Subject, (Subject) => Subject.schadules)
   @JoinTable()
   subjects: Subject[];

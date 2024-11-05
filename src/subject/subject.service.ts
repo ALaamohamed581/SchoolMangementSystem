@@ -5,12 +5,14 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Exam } from 'src/entites/exam.entity';
 import { Subject } from 'src/entites/Subject.entity';
+import { Schadule } from 'src/entites/schadule.enitity';
 
 @Injectable()
 export class SubjectService {
   constructor(
     @InjectRepository(Subject) private subjectRepo: Repository<Subject>,
     @InjectRepository(Exam) private examRepo: Repository<Exam>,
+    @InjectRepository(Schadule) private shdauleRepo: Repository<Schadule>,
   ) {}
   async create(createSubjectDto: CreateSubjectDto) {
     let subject = this.subjectRepo.create(createSubjectDto);
@@ -40,8 +42,17 @@ export class SubjectService {
   async update(id: number, data: any) {
     return await this.subjectRepo.update(id, data);
   }
+  async createSchduleDate(subjectId: number, date: any) {
+    let schadule: any = this.shdauleRepo.create(date);
+    await this.shdauleRepo.save(schadule);
 
-  remove(id: number) {
-    return `This action removes a #${id} subject`;
+    let subject = await this.subjectRepo.findOne({
+      where: { id: subjectId },
+      relations: ['schadules'],
+    });
+    subject.schadules.push(schadule);
+    await this.subjectRepo.save(subject);
+
+    return subject;
   }
 }

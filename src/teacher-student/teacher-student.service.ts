@@ -22,15 +22,8 @@ export class TeacherStudentService {
     });
     student.Teacher.push(teacher);
     await this.studnetRepo.save(student);
-    return;
-  }
 
-  findAll() {
-    return `This action returns all teacherStudent`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} teacherStudent`;
+    return { teacher };
   }
 
   update(id: number, updateTeacherStudentDto: UpdateTeacherStudentDto) {

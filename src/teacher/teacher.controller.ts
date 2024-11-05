@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { TeacherService } from './teacher.service';
 import { CreateTeacherDto } from './dto/create-teacher.dto';
@@ -25,18 +26,13 @@ export class TeacherController {
     return this.teacherService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: number) {
-    return this.teacherService.findOne(id);
+  @Get('one')
+  findOne(@Query() queryString: string) {
+    return this.teacherService.findOne(queryString);
   }
 
   @Patch(':id')
   update(@Param('id') id: number, @Body() updateTeacherDto: UpdateTeacherDto) {
     return this.teacherService.update(id, updateTeacherDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.teacherService.remove(+id);
   }
 }
