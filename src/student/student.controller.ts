@@ -24,6 +24,10 @@ export class StudentController {
   findAll() {
     return this.studentService.findAll();
   }
+  @Get('grade-schadule/:stdId')
+  getGradeSchdule(@Param('stdId') stdId: number) {
+    return this.studentService.getGradeSchedule(stdId);
+  }
 
   @Get(':id')
   findOne(@Param('id') id: string) {

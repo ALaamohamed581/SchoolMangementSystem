@@ -27,7 +27,62 @@ export class StudentService {
     return this.studentRepo.update(id, updateStudentDto);
   }
 
+  // async getGradeSchdule(id: number) {
+  //   const GradeSchdule = await this.studentRepo
+  //     .createQueryBuilder('student')
+  //     .innerJoin(
+  //       'student_teacher_teacher',
+  //       'student_teacher_teacher',
+  //       'student_teacher_teacher.studentId = student.id',
+  //     )
+  //     .innerJoin(
+  //       'teacher',
+  //       'teacher',
+  //       'teacher.id=student_teacher_teacher.teacherId',
+  //     )
+  //     .innerJoin('subject', 'subject', 'subject.id = teacher.subjectId')
+  //     .innerJoin(
+  //       'schadule_subjects_subject',
+  //       'schadule_subjects_subject',
+  //       'schadule_subjects_subject.subjectId=subjcet.id',
+  //     )
+  //     .innerJoin(
+  //       'schadule',
+  //       'schadule',
+  //       'schadule.id=schadule_subjects_subject.schaduleId',
+  //     )
+  //     .getMany();
+  //   return GradeSchdule;
+  // }
+  async getGradeSchedule(id: number) {
+    const GradeSchedule = await this.studentRepo
+      .createQueryBuilder('student')
+      .innerJoinAndSelect(
+        'student_teacher_teacher',
+        'student_teacher_teacher',
+        `student_teacher_teacher.studentId = ${id}`,
+      )
+      .innerJoin(
+        'teacher',
+        'teacher',
+        'teacher.id = student_teacher_teacher.teacherId',
+      )
+      .innerJoin('subject', 'subject', 'subject.id = teacher.subjectId')
+      .innerJoin(
+        'schadule_subjects_subject',
+        'schadule_subjects_subject',
+        'schadule_subjects_subject.subjectId = subject.id',
+      )
+      .innerJoinAndSelect(
+        'schadule',
+        'schadule',
+        'schadule.id = schadule_subjects_subject.schaduleId',
+      )
+      .getMany();
+    return GradeSchedule;
+  }
+
   remove(id: number) {
-    return `This action removes a #${id} student`;
+    return this.studentRepo.delete(id);
   }
 }

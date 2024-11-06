@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { SchaduleService } from './schadule.service';
 import { CreateSchaduleDto } from './dto/create-schadule.dto';
 import { UpdateSchaduleDto } from './dto/update-schadule.dto';
@@ -22,8 +30,15 @@ export class SchaduleController {
     return this.schaduleService.findOne(+id);
   }
 
+  @Get('grade-schadule/:stdId')
+  getGradeSchadule(@Param('stdId') stdId: number) {
+    return this.schaduleService.getGradeSchdule(stdId);
+  }
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSchaduleDto: UpdateSchaduleDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateSchaduleDto: UpdateSchaduleDto,
+  ) {
     return this.schaduleService.update(+id, updateSchaduleDto);
   }
 
