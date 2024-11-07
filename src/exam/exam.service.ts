@@ -14,19 +14,31 @@ export class ExamService {
     return exam;
   }
 
-  findAll() {
-    return `This action returns all exam`;
+  async findAll(queryString: string) {
+    return await this.examRepo
+      .createQueryBuilder('exam')
+      .take(10)
+      .where([queryString])
+      .getMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} exam`;
+  async findOne(id: number) {
+    return await this.examRepo
+      .createQueryBuilder('exam')
+      .where('exam.id =  :id', { id })
+      .getOne();
   }
 
-  update(id: number, updateExamDto: UpdateExamDto) {
-    return `This action updates a #${id} exam`;
+  async update(id: number, updateExamDto: UpdateExamDto) {
+    return await this.examRepo.update(id, updateExamDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} exam`;
+  async remove(id: number) {
+    return await this.examRepo
+      .createQueryBuilder('exam')
+      .delete()
+      .from('exam')
+      .where('exam.id = :id', { id })
+      .execute();
   }
 }
