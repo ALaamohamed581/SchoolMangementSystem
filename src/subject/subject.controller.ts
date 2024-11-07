@@ -45,4 +45,8 @@ export class SubjectController {
   update(@Param('id') id: string, @Body() updateSubjectDto: UpdateSubjectDto) {
     return this.subjectService.update(+id, updateSubjectDto);
   }
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.subjectService.remove(+id);
+  }
 }

@@ -55,4 +55,12 @@ export class SubjectService {
 
     return subject;
   }
+  async remove(id: number) {
+    return await this.subjectRepo
+      .createQueryBuilder('subject')
+      .delete()
+      .from('subject')
+      .where('subject.id = :id', { id })
+      .execute();
+  }
 }
