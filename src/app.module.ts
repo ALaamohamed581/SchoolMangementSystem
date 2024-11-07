@@ -13,9 +13,18 @@ import { SchaduleModule } from './schadule/schadule.module';
 import { SubjectModule } from './subject/subject.module';
 import { ExamModule } from './exam/exam.module';
 import { TeacherStudentModule } from './teacher-student/teacher-student.module';
-
+import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
+import { MyLoggerService } from './my-logger/my-logger.service';
+import { MyLoggerModule } from './my-logger/my-logger.module';
 @Module({
   imports: [
+    ThrottlerModule.forRoot([
+      {
+        ttl: 60000,
+        limit: 15,
+      },
+    ]),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -32,8 +41,9 @@ import { TeacherStudentModule } from './teacher-student/teacher-student.module';
     SubjectModule,
     ExamModule,
     TeacherStudentModule,
+    MyLoggerModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, { provide: APP_GUARD, useClass: ThrottlerGuard }, MyLoggerService],
 })
 export class AppModule {}
