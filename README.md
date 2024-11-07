@@ -32,46 +32,13 @@ Follow these steps to get the project running on your local machine:
     npm run start:dev
     ```
 
-The application should now be running at `http://localhost:3000`.
+The application should now be running at `http://localhost:8000`.
 
 ## Available Endpoints
 
 Here are the currently available endpoints for the system:
 
-### Students
-- `GET /students` - Get all students.
-- `POST /students` - Create a new student.
-- `GET /students/:id` - Get a student by ID.
-- `PATCH /students/:id` - Update a student by ID.
-- `DELETE /students/:id` - Delete a student by ID.
-
-### Teachers
-- `GET /teachers` - Get all teachers.
-- `POST /teachers` - Create a new teacher.
-- `GET /teachers/:id` - Get a teacher by ID.
-- `PATCH /teachers/:id` - Update a teacher by ID.
-- `DELETE /teachers/:id` - Delete a teacher by ID.
-
-### Subjects
-- `GET /subjects` - Get all subjects.
-- `POST /subjects` - Create a new subject.
-- `GET /subjects/:id` - Get a subject by ID.
-- `PATCH /subjects/:id` - Update a subject by ID.
-- `DELETE /subjects/:id` - Delete a subject by ID.
-
-### Exams
-- `GET /exams` - Get all exams.
-- `POST /exams` - Create a new exam.
-- `GET /exams/:id` - Get an exam by ID.
-- `PATCH /exams/:id` - Update an exam by ID.
-- `DELETE /exams/:id` - Delete an exam by ID.
-
-### Books
-- `GET /books` - Get all books.
-- `POST /books` - Add a new book to the system.
-- `GET /books/:id` - Get a book by ID.
-- `PATCH /books/:id` - Update a book by ID.
-- `DELETE /books/:id` - Delete a book by ID.
+https://documenter.getpostman.com/view/33392458/2sAY518fgr
 
 ## Database Setup
 
