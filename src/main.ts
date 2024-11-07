@@ -1,14 +1,19 @@
-import { NestFactory } from '@nestjs/core';
+import { NestFactory, HttpAdapterHost } from '@nestjs/core';
 import { AppModule } from './app.module';
 import helmet from 'helmet';
 import { MyLoggerService } from './my-logger/my-logger.service';
+import { AllExceptionFilter } from './allexceptipons.filters';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     bufferLogs: true,
   });
-  app.useLogger(app.get(MyLoggerService));
+  const { httpAdapter } = app.get(HttpAdapterHost);
+  let logger = app.get(MyLoggerService);
+  app.useLogger(logger);
+  app.useGlobalFilters(new AllExceptionFilter(httpAdapter));
   app.setGlobalPrefix('api/v1');
+
   //this is now enabled for everyone which is not recommended in production
   app.enableCors({
     origin: '*',

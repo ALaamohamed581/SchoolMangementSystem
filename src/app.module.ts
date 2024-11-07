@@ -44,6 +44,10 @@ import { MyLoggerModule } from './my-logger/my-logger.module';
     MyLoggerModule,
   ],
   controllers: [AppController],
-  providers: [AppService, { provide: APP_GUARD, useClass: ThrottlerGuard }, MyLoggerService],
+  providers: [
+    AppService,
+    { provide: APP_GUARD, useClass: ThrottlerGuard },
+    MyLoggerService,
+  ],
 })
 export class AppModule {}
