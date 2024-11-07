@@ -1,6 +1,3 @@
-Sure! Here's a sample GitHub README for your project, based on the information you've provided:
-
----
 
 # School Management System
 
