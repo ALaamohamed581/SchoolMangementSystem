@@ -1,16 +1,15 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateExamDto } from './dto/create-exam.dto';
 import { UpdateExamDto } from './dto/update-exam.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Exam } from 'src/entites/exam.entity';
+import { Exam } from './exam.entity';
 
 @Injectable()
 export class ExamService {
   constructor(@InjectRepository(Exam) private examRepo: Repository<Exam>) {}
-  async create(createExamDto: CreateExamDto) {
-    const exam = this.examRepo.create(createExamDto);
-    await this.examRepo.save(exam);
+  async create(createExamDto: CreateExamDto): Promise<Exam> {
+    const exam: Exam = this.examRepo.create(createExamDto);
     return exam;
   }
 
@@ -23,13 +22,13 @@ export class ExamService {
   }
 
   async findOne(id: number) {
-    return await this.examRepo
-      .createQueryBuilder('exam')
-      .where('exam.id =  :id', { id })
-      .getOne();
+    return await this.examRepo.findOne({ where: { id } });
   }
 
-  async update(id: number, updateExamDto: UpdateExamDto) {
+  async update(id: number, updateExamDto: any) {
+    if (!this.examRepo.findOne({ where: { id } })) {
+      throw new NotFoundException('this email is either deleted of not found');
+    }
     return await this.examRepo.update(id, updateExamDto);
   }
 

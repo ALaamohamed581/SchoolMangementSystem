@@ -29,8 +29,4 @@ export class TeacherStudentService {
   update(id: number, updateTeacherStudentDto: UpdateTeacherStudentDto) {
     return `This action updates a #${id} teacherStudent`;
   }
-
-  remove(id: number) {
-    return `This action removes a #${id} teacherStudent`;
-  }
 }

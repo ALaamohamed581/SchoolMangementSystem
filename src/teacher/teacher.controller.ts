@@ -22,8 +22,8 @@ export class TeacherController {
   }
 
   @Get()
-  findAll() {
-    return this.teacherService.findAll();
+  findAll(@Query() queryString: string) {
+    return this.teacherService.findAll(queryString);
   }
 
   @Get('one')

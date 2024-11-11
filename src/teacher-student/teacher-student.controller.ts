@@ -31,8 +31,8 @@ export class TeacherStudentController {
     return this.teacherStudentService.update(+id, updateTeacherStudentDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.teacherStudentService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.teacherStudentService.remove(+id);
+  // }
 }

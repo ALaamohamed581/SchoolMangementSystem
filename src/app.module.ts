@@ -15,8 +15,8 @@ import { ExamModule } from './exam/exam.module';
 import { TeacherStudentModule } from './teacher-student/teacher-student.module';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
-import { MyLoggerService } from './my-logger/my-logger.service';
-import { MyLoggerModule } from './my-logger/my-logger.module';
+import { MyLoggerService } from './helper/my-logger/my-logger.service';
+import { MyLoggerModule } from './helper/my-logger/my-logger.module';
 @Module({
   imports: [
     ThrottlerModule.forRoot([

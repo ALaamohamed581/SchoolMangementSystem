@@ -16,8 +16,9 @@ export class TeacherService {
     return await this.TeacherRepo.save(t);
   }
 
-  async findAll() {
+  async findAll(queryString: string) {
     const queryBuilder = await this.TeacherRepo.createQueryBuilder('teacher')
+      .where([queryString])
       .take(5)
       .getMany();
 
@@ -27,6 +28,7 @@ export class TeacherService {
   async findOne(queryString: string) {
     const queryBuilder = await this.TeacherRepo.createQueryBuilder('teacher')
       .where([queryString])
+
       .getOne();
     return queryBuilder;
   }

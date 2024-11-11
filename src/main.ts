@@ -1,8 +1,8 @@
 import { NestFactory, HttpAdapterHost } from '@nestjs/core';
 import { AppModule } from './app.module';
 import helmet from 'helmet';
-import { MyLoggerService } from './my-logger/my-logger.service';
-import { AllExceptionFilter } from './allexceptipons.filters';
+import { MyLoggerService } from './helper/my-logger/my-logger.service';
+import { AllExceptionFilter } from './helper/allexceptipons.filters';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
