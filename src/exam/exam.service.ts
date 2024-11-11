@@ -3,7 +3,7 @@ import { CreateExamDto } from './dto/create-exam.dto';
 import { UpdateExamDto } from './dto/update-exam.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Exam } from './exam.entity';
+import { Exam } from '../entites/exam.entity';
 
 @Injectable()
 export class ExamService {

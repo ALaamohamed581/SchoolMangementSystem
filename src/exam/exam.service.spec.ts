@@ -3,9 +3,9 @@ import { ExamService } from './exam.service';
 
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Repository, UpdateResult } from 'typeorm';
-import { Exam } from './exam.entity';
-import { Student } from './student.entity';
-import { Subject } from './Subject.entity';
+import { Exam } from '../entites/exam.entity';
+import { Student } from 'src/entites/student.entity';
+import { Subject } from 'src/entites/Subject.entity';
 
 describe('ss', () => {
   let service: ExamService;
