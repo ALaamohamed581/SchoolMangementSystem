@@ -42,3 +42,4 @@ https://documenter.getpostman.com/view/33392458/2sAY518fgr
 Ensure that you have **PostgreSQL** installed and running on your machine. Update the database connection details in the `config` file (or environment variables) to match your setup.
 
  more complex qureis to be added ....
+ valdiation + security 

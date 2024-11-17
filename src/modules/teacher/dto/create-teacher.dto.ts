@@ -10,13 +10,11 @@ export class CreateTeacherDto {
   name: string;
 
   @IsEmail()
-  @ApiProperty()
   @ApiProperty({ example: 'example@test.com' })
   email: string;
 
   @IsString()
   @Exclude()
-  @ApiProperty()
   @ApiProperty({ example: 'A12345z' })
   password: string;
 
@@ -31,11 +29,11 @@ export class CreateTeacherDto {
   @IsOptional()
   @IsArray()
   @Type(() => Student)
-  @ApiProperty()
+  @ApiProperty({ required: false })
   students?: Student[];
 
   @IsOptional()
   @Type(() => Subject)
-  @ApiProperty()
+  @ApiProperty({ required: false })
   Subject?: Subject;
 }

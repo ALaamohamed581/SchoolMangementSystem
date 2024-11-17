@@ -16,6 +16,6 @@ export class CreateSchaduleDto {
   time?: Date;
 
   @IsArray()
-  @ApiProperty()
+  @ApiProperty({ required: false })
   subjects: Subject[];
 }

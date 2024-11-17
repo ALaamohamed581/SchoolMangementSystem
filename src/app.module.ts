@@ -60,6 +60,8 @@ import { CorsConfiguration } from './middelawres/CorsConfiguration';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(RequestLooger, CorsConfiguration, helmet()).forRoutes('*');
+    consumer
+      .apply(RequestLooger, /*CorsConfiguration,*/ helmet())
+      .forRoutes('*');
   }
 }
