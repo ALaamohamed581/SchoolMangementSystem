@@ -31,11 +31,7 @@ Follow these steps to get the project running on your local machine:
 
 The application should now be running at `http://localhost:8000`.
 
-## Available Endpoints
 
-Here are the currently available endpoints for the system:
-
-https://documenter.getpostman.com/view/33392458/2sAY518fgr
 
 ## Database Setup
 
