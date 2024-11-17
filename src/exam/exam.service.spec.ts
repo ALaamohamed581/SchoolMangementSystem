@@ -14,11 +14,11 @@ describe('ss', () => {
   beforeEach(async () => {
     const mockExamRepository: Partial<ExamService> = {
       findAll: () => Promise.resolve([]),
-      create: (TimeDate: Date) => {
-        const exam = { id: 1, TimeDate };
-        exams.push(exam);
-        return Promise.resolve(exam as Exam);
-      },
+      // create: (TimeDate: Date) => {
+      //   const exam = { id: 1, TimeDate };
+      //   exams.push(exam);
+      //   return Promise.resolve(exam as Exam);
+      // },
       findOne: (id: number) =>
         Promise.resolve({
           id,
@@ -59,7 +59,9 @@ describe('ss', () => {
   //   expect(users).toBe([]);
   // });
   it('creates a new exam', async () => {
-    const exam = await service.create('2024-01-31');
+    const exam = await service.create({
+      TimeDate: new Date('2024-01-31'),
+    });
     expect(exam).toBeDefined();
     expect(exam.TimeDate).toBe('2024-01-31');
   });

@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 import { Teacher } from './teacher.entity';
 import { Exam } from './exam.entity';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 export class Student {
@@ -17,6 +18,7 @@ export class Student {
   name: string;
   @Column({ type: 'varchar' })
   email: string;
+  @Exclude()
   @Column({ type: 'varchar' })
   password: string;
   @Column({ type: 'date' })

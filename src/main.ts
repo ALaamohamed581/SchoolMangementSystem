@@ -1,28 +1,27 @@
 import { NestFactory, HttpAdapterHost } from '@nestjs/core';
 import { AppModule } from './app.module';
 import helmet from 'helmet';
-import { MyLoggerService } from './helper/my-logger/my-logger.service';
 import { AllExceptionFilter } from './helper/allexceptipons.filters';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     bufferLogs: true,
   });
   const { httpAdapter } = app.get(HttpAdapterHost);
-  let logger = app.get(MyLoggerService);
-  app.useLogger(logger);
   app.useGlobalFilters(new AllExceptionFilter(httpAdapter));
   app.setGlobalPrefix('api/v1');
 
   //this is now enabled for everyone which is not recommended in production
-  app.enableCors({
-    origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-  });
-  app.use(helmet());
 
+  const config = new DocumentBuilder()
+    .setTitle('Shcool mangment Systme')
+    .setDescription('this a bancked only nest js')
+    .setVersion('1.0')
+    .addTag('SMS')
+    .build();
+  const documentFactory = () => SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api/v1', app, documentFactory);
   await app.listen(8000);
 }
 bootstrap();
