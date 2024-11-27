@@ -39,3 +39,8 @@ Ensure that you have **PostgreSQL** installed and running on your machine. Updat
 
  more complex qureis to be added ....
  valdiation + security 
+
+
+ ## Documentation at
+     http://localhost:8000/api/v1
+
